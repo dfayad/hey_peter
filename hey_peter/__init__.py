@@ -38,10 +38,6 @@ while True:
     except sr.UnknownValueError:
         print("oops didnt catch that")
 
-    except sr.RequestError as e:
-        print("other stuff")
-
-
 while True:
     print("say something")
     with m as source:audio = r.listen(source)
@@ -56,15 +52,9 @@ while True:
                 print(">>>Starting motion detection...")
                 os.system('aplay docs/Sure.wav')
                 break
-        else:
-            print("you said {}".format(value))
             
     except sr.UnknownValueError:
         print("oops didnt catch that")
-
-    except sr.RequestError as e:
-        print("other stuff")
-
 
 #-----------speech part------------------
 
