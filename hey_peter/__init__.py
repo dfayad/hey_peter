@@ -17,62 +17,56 @@ import speech_recognition as sr
 r = sr.Recognizer()
 m = sr.Microphone()
 
-try:
-    print("A moment of silence please..")
-    with m as source: r.adjust_for_ambient_noise(source)
-    print("set min energy threshold to {}".format(r.energy_threshold))
-    while True:
-        print("waiting for you to call out my name")
-        with m as source:audio = r.listen(source)
-        print("okay im listening")
-        try: 
-            value = r.recognize_google(audio)
+print("A moment of silence please..")
+with m as source: r.adjust_for_ambient_noise(source)
+print("set min energy threshold to {}".format(r.energy_threshold))
+while True:
+    print("waiting for you to call out my name")
+    with m as source:audio = r.listen(source)
+    print("okay im listening")
+    try: 
+        value = r.recognize_google(audio)
 
-            if str is bytes:
-                print(u"you said {}".format(value).encode("utf-8"))
-                if "hey Peter" in value:
-                    print("oh hey!")
-                    os.system('aplay wassup.wav')
-                    break
-            print("that's not my name!")
-        
-        except sr.UnknownValueError:
-            print("oops didnt catch that")
+        if str is bytes:
+            print(u"you said {}".format(value).encode("utf-8"))
+            if "hey Peter" in value:
+                print("oh hey!")
+                os.system('aplay wassup.wav')
+                break
+        print("that's not my name!")
+    
+    except sr.UnknownValueError:
+        print("oops didnt catch that")
 
-        except sr.RequestError as e:
-            print("other stuff")
-except KeyboardInterrupt:
-    pass
+    except sr.RequestError as e:
+        print("other stuff")
 
-try:
-    print("A moment of silence please...")
-    with m as source: r.adjust_for_ambient_noise(source)
-    print("set min energy threshold to {}".format(r.energy_threshold))
-    while True:
-        print("say something")
-        with m as source:audio = r.listen(source)
-        print("got it now time to investigate sounds")
-        try:
-            value = r.recognize_google(audio)
+print("A moment of silence please...")
+with m as source: r.adjust_for_ambient_noise(source)
+print("set min energy threshold to {}".format(r.energy_threshold))
+while True:
+    print("say something")
+    with m as source:audio = r.listen(source)
+    print("got it now time to investigate sounds")
+    try:
+        value = r.recognize_google(audio)
 
-            if str is bytes:
-                print(u"you said {}".format(value).encode("utf-8"))
-                print(type(value))
-                if "start motion detection" in value:
-                    print(">>>Starting motion detection...")
-                    os.system('aplay Sure.wav')
-                    break
-            else:
-                print("you said {}".format(value))
-                
-        except sr.UnknownValueError:
-            print("oops didnt catch that")
+        if str is bytes:
+            print(u"you said {}".format(value).encode("utf-8"))
+            print(type(value))
+            if "start motion detection" in value:
+                print(">>>Starting motion detection...")
+                os.system('aplay Sure.wav')
+                break
+        else:
+            print("you said {}".format(value))
+            
+    except sr.UnknownValueError:
+        print("oops didnt catch that")
 
-        except sr.RequestError as e:
-            print("other stuff")
+    except sr.RequestError as e:
+        print("other stuff")
 
-except KeyboardInterrupt:
-    pass
 
 #-----------speech part------------------
 
