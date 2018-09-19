@@ -32,7 +32,7 @@ try:
                 print(u"you said {}".format(value).encode("utf-8"))
                 if "hey Peter" in value:
                     print("oh hey!")
-                    os.system('aplay wassup.wav')
+                    os.system('aplay docs/wassup.wav')
                     break
             print("that's not my name!")
         
@@ -60,7 +60,7 @@ try:
                 print(type(value))
                 if "start motion detection" in value:
                     print(">>>Starting motion detection...")
-                    os.system('aplay Sure.wav')
+                    os.system('aplay docs/Sure.wav')
                     break
             else:
                 print("you said {}".format(value))
