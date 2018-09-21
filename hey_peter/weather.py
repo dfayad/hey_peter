@@ -1,9 +1,11 @@
-from weather import Weather, Unit
+import pyowm
 
-#woeid = 12762398
-weather = Weather(unit=Unit.CELSIUS)
+owm = pyowm.OWM('95a141370f399bb06abaa704d3c26a29')  # You MUST provide a valid API key
 
-lookup = weather.lookup(12762398)
-condition = lookup.condition
+# Have a pro subscription? Then use:
+# owm = pyowm.OWM(API_key='your-API-key', subscription_type='pro')
 
-print(condition.text)
+# Search for current weather in London (Great Britain)
+observation = owm.weather_at_place('London,GB')
+w = observation.get_weather()
+print(w.get_temperature('celsius'))  
