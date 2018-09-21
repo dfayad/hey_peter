@@ -1,3 +1,4 @@
+#coding: utf-8
 import pyowm
 from collections import deque
 import numpy as np
@@ -68,6 +69,7 @@ observation = owm.weather_at_place(location)
 w = observation.get_weather()
 status = w.get_status()
 currTemp = int(w.get_temperature('celsius')['temp'])
+print('Heres the weather:')
 print("The current temperature in " + str(location) + " is " + str(currTemp) + "ºC and the status is " + str(status))
 observation_list = owm.weather_around_coords(-22.57, -43.12)
 #print(observation_list)
