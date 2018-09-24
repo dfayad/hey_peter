@@ -31,6 +31,7 @@ What I plan to implement next:
 
 3) Display a funny picture of Peter once the program starts just for funzies hehe
 
+4) Add music playing functionality. Ex. "Hey Peter, play Despacito." I'm gonna try to use Spotify's API for this.
 
 Hardware needed:
 Raspberry Pi 3 B
