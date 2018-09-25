@@ -5,6 +5,8 @@ It uses OpenCV and SpeechRecognition Python libaries and it uses .wav recordings
 Here's the first demo video showing some of the features:
 https://www.youtube.com/watch?v=FKI37sYgyzY
 
+The current script with the features shown on the video is on: complete_peter_start.py
+
 Here are the specific libraries you need:
 
 For Speech Recognition: SpeechRecognition
