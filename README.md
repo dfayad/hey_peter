@@ -2,6 +2,9 @@ This is a Raspberry Pi Project aimed to be my personal Alexa-like smart device.
 
 It uses OpenCV and SpeechRecognition Python libaries and it uses .wav recordings of Peter Romero's voice (college housemate) to respond to commands and execute programs. It originally used PocketSphinx due to the fact that it works without internet for speech recognition but now it uses Google's speech recognition system so it requires network connectivity. This also allows for increased new abilities like displaying weather data.
 
+Here's the first demo video showing some of the features:
+https://www.youtube.com/watch?v=FKI37sYgyzY
+
 Here are the specific libraries you need:
 
 For Speech Recognition: SpeechRecognition
