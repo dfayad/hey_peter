@@ -1,3 +1,5 @@
+#coding: utf-8
+import pyowm
 from collections import deque
 import numpy as np
 import argparse
@@ -143,17 +145,17 @@ while True:
 
             elif "weather" in value:
                 print("weather? sure!")
-                os.system('aplay docs/sure.wav')
+                os.system('aplay docs/Sure.wav')
                 print(get_weather())
 
             elif "start motion detection" in value:
                 print("weather? sure!")
-                os.system('aplay docs/sure.wav')
+                os.system('aplay docs/Sure.wav')
                 print(motion_detection())
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
-                os.system('aplay docs/sure.wav')
+                os.system('aplay docs/Sure.wav')
                 break
     
     except sr.UnknownValueError:
