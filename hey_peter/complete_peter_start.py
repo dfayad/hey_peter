@@ -13,6 +13,10 @@ import subprocess
 
 import datetime
 
+#for sms
+from six.moves import input
+from googlevoice import Voice
+
 #------------speech part------------------
 import speech_recognition as sr
 
@@ -24,14 +28,14 @@ with m as source: r.adjust_for_ambient_noise(source)
 #send sms
 def send_text():
     voice = Voice()
-    email = 'some@email' #write email here
+    email = 'some_email' #write email here
     pw = 'some_pw' #write pw here
     voice.login(email, pw)
 
     #phoneNumber = input('Number to send message to: ')
     #text = input('Message text: ')
-    phoneNumber = 6073798229
-    text = 'sup'
+    phoneNumber = 1234567890 #write number you wanna get
+    text = 'Hello from Hey Peter!'
 
     voice.send_sms(phoneNumber, text)
 
@@ -169,6 +173,7 @@ while True:
 
             elif "send text" in value:
                 print("sending text...")
+                os.system('aplay docs/Sure.wav')
                 send_text()
 
             elif ("exit" in value) or ("bye" in value):

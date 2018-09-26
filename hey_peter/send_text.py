@@ -4,14 +4,14 @@ from googlevoice import Voice
 
 def run():
     voice = Voice()
-    email = 'some@email' #write email here
-    pw = 'some_pw' #write pw here
+    email = 'dfayadv@gmail.com' #write email here
+    pw = '' #write pw here
     voice.login(email, pw)
 
     #phoneNumber = input('Number to send message to: ')
     #text = input('Message text: ')
     phoneNumber = 6073798229
-    text = 'sup'
+    text = 'sup from pi'
 
     voice.send_sms(phoneNumber, text)
 
