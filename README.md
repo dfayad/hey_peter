@@ -1,9 +1,12 @@
 This is a Raspberry Pi Project aimed to be my personal Alexa-like smart device.
 
-It uses OpenCV and SpeechRecognition Python libaries and it uses .wav recordings of Peter Romero's voice (college housemate) to respond to commands and execute programs. It originally used PocketSphinx due to the fact that it works without internet for speech recognition but now it uses Google's speech recognition system so it requires network connectivity. This also allows for increased new abilities like displaying weather data.
+It uses OpenCV and SpeechRecognition Python libaries and it uses .wav recordings of Peter Romero's voice (college housemate) to respond to commands and execute programs. It originally used PocketSphinx due to the fact that it works without internet for speech recognition but now it uses Google's speech recognition system so it requires network connectivity. This also allows for increased new abilities like displaying weather data and sending texts.
 
 Here's the first demo video showing some of the features:
 https://www.youtube.com/watch?v=FKI37sYgyzY
+
+Here's a demo of the "send text" functionality
+https://www.youtube.com/watch?v=iQ0sRBOzROM
 
 The current script with the features shown on the video is on: complete_peter_start.py
 
@@ -21,6 +24,10 @@ To get weather information PyOWM
 (Python Wrapper for OpenWeatherMap API)
 https://github.com/csparpa/pyowm
 
+To send texts
+(Python Wrapper for Google Voice API)
+https://github.com/pettazz/pygooglevoice
+
 So far here is what it can do:
 1) Respond to you when you say "Hey Peter"
 
@@ -28,6 +35,8 @@ So far here is what it can do:
 
 3) If you say the command "weather" it returns the current temperature (in celsius) and the weather general status (sunny, rainy, cloudy) in the location specified in the weather.py file.
 
+4) The command "send text" sends "Hello! from Hey Peter!" to any phone number that you want (i think it has to be a US number), you just gotta get a Google Voice account first, and then write your credentials (email, password and target phone number) in the send_text() function of the complete_peter_start.py file. 
+ 
 What I plan to implement next:
 
 1) Implement some kind of alarm system so that in case the Pi detects movement in the house it will trigger a countdown and then emit a loud sound unless a keyword is said to the microphone.
