@@ -21,6 +21,20 @@ m = sr.Microphone()
 print("A moment of silence please..")
 with m as source: r.adjust_for_ambient_noise(source)
 
+#send sms
+def send_text():
+    voice = Voice()
+    email = 'some@email' #write email here
+    pw = 'some_pw' #write pw here
+    voice.login(email, pw)
+
+    #phoneNumber = input('Number to send message to: ')
+    #text = input('Message text: ')
+    phoneNumber = 6073798229
+    text = 'sup'
+
+    voice.send_sms(phoneNumber, text)
+
 #weather function
 def get_weather():
     owm = pyowm.OWM('95a141370f399bb06abaa704d3c26a29')  # You MUST provide a valid API key
@@ -152,6 +166,10 @@ while True:
                 print("weather? sure!")
                 os.system('aplay docs/Sure.wav')
                 print(motion_detection())
+
+            elif "send text" in value:
+                print("sending text...")
+                send_text()
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
