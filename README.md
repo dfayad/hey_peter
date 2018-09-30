@@ -70,3 +70,6 @@ https://www.amazon.com/gp/product/B01CD5VC92
 
 USB Microphone:
 https://www.amazon.com/gp/product/B00UZY2YQE
+
+SD Card:
+https://www.amazon.com/Sandisk-Ultra-Micro-UHS-I-Adapter/dp/B073JWXGNT
