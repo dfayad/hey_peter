@@ -150,6 +150,11 @@ def timer(length):
 		print(i)
 		time.sleep(1)
 
+items = []
+def add_grocery(item):
+    items.append(item)
+    print(items)
+
 while True:
     #loop over speech here
     print("okay im listening")
@@ -192,6 +197,18 @@ while True:
             	l = string_value.split(" ")
             	secs = int(l[1])
             	timer(secs)
+
+            elif "grocer" in value:
+                #so it catches grocery or groceries
+                print("adding to grocery list...")
+                os.system('aplay docs/Sure.wav')
+                arr = string_value.split(" ")
+                grocery_item = arr[1:]
+                s=""
+                for word in grocery_item:
+                    s+str(word)
+                add_grocery(s)
+
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
