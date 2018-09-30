@@ -29,13 +29,13 @@ with m as source: r.adjust_for_ambient_noise(source)
 #send sms
 def send_text():
     voice = Voice()
-    email = 'some_email' #write email here
-    pw = 'some_pw' #write pw here
+    email = 'dfayadv@gmail.com' #write email here
+    pw = 'password' #write pw here
     voice.login(email, pw)
 
     #phoneNumber = input('Number to send message to: ')
     #text = input('Message text: ')
-    phoneNumber = 1234567890 #write number you wanna get
+    phoneNumber = 6073798229 #write number you wanna get
     text = 'Hello from Hey Peter!'
 
     voice.send_sms(phoneNumber, text)
@@ -164,7 +164,11 @@ def spotify():
 	devices = sp.devices()
 	sp.start_playback(devices[0], uris = [track['uri']])
 
-
+items = []
+def add_grocery(item):
+    if item != '':
+        items.append(item)
+    print(items)
 
 while True:
     #loop over speech here
@@ -186,6 +190,10 @@ while True:
                 print("weather? sure!")
                 os.system('aplay docs/Sure.wav')
                 print(get_weather())
+                        
+            elif "thank" in value:
+                print("no problem buddy")
+                os.system('aplay docs/Sure.wav')
 
             elif "start motion detection" in value:
                 print("weather? sure!")
@@ -201,7 +209,7 @@ while True:
             	print("starting timer...")
             	os.system('aplay docs/Sure.wav')
             	string_value = str(value)
-            	l = string_value.split(delimiter=' ')
+            	l = string_value.split(" ")
             	secs = int(l[1])
             	timer(secs)
 
@@ -210,6 +218,18 @@ while True:
             	os.system('aplay docs/Sure.wav')
             	l = str(value).split(delimeter=' ')
             	spotify(l)
+
+            elif "grocer" in value:
+                #so it catches grocery or groceries
+                print("adding to grocery list...")
+                os.system('aplay docs/Sure.wav')
+                string_value = str(value)
+                arr = string_value.split(" ")
+                grocery_item = arr[1:]
+                s=""
+                for word in grocery_item:
+                    s=s+str(word)
+                add_grocery(s)
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
