@@ -29,7 +29,7 @@ with m as source: r.adjust_for_ambient_noise(source)
 def send_text():
     voice = Voice()
     email = 'dfayadv@gmail.com' #write email here
-    pw = 'kiwiabc123.' #write pw here
+    pw = 'password' #write pw here
     voice.login(email, pw)
 
     #phoneNumber = input('Number to send message to: ')
@@ -170,6 +170,10 @@ while True:
                 print("weather? sure!")
                 os.system('aplay docs/Sure.wav')
                 print(get_weather())
+                        
+            elif "thank" in value:
+                print("no problem buddy")
+                os.system('aplay docs/Sure.wav')
 
             elif "start motion detection" in value:
                 print("weather? sure!")
@@ -185,7 +189,7 @@ while True:
             	print("starting timer...")
             	os.system('aplay docs/Sure.wav')
             	string_value = str(value)
-            	l = string_value.split(delimiter=' ')
+            	l = string_value.split(" ")
             	secs = int(l[1])
             	timer(secs)
 
