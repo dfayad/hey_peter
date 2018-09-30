@@ -8,6 +8,9 @@ https://www.youtube.com/watch?v=FKI37sYgyzY
 Here's a demo of the "send text" functionality
 https://www.youtube.com/watch?v=iQ0sRBOzROM
 
+A better quality version of the send text video:
+https://www.youtube.com/watch?v=BTft0iFqqok
+
 The current script with the features shown on the video is on: complete_peter_start.py
 
 Here are the specific libraries you need:
