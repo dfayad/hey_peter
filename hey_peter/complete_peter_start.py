@@ -152,7 +152,8 @@ def timer(length):
 
 items = []
 def add_grocery(item):
-    items.append(item)
+    if item != '':
+        items.append(item)
     print(items)
 
 while True:
@@ -202,11 +203,12 @@ while True:
                 #so it catches grocery or groceries
                 print("adding to grocery list...")
                 os.system('aplay docs/Sure.wav')
+                string_value = str(value)
                 arr = string_value.split(" ")
                 grocery_item = arr[1:]
                 s=""
                 for word in grocery_item:
-                    s+str(word)
+                    s=s+str(word)
                 add_grocery(s)
 
 
