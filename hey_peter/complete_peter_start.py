@@ -145,6 +145,11 @@ def motion_detection():
     camera.close()
     cv2.destroyAllWindows()
 
+def timer(length):
+	for i in range(length):
+		print(i)
+		time.sleep(1)
+
 while True:
     #loop over speech here
     print("okay im listening")
@@ -175,6 +180,14 @@ while True:
                 print("sending text...")
                 os.system('aplay docs/Sure.wav')
                 send_text()
+
+            elif "timer" in value:
+            	print("starting timer...")
+            	os.system('aplay docs/Sure.wav')
+            	string_value = str(value)
+            	l = string_value.split(delimiter=' ')
+            	secs = int(l[1])
+            	timer(secs)
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
