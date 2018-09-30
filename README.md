@@ -47,7 +47,26 @@ What I plan to implement next:
 
 4) Add music playing functionality. Ex. "Hey Peter, play Despacito." I'm gonna try to use Spotify's API for this.
 
-Hardware needed:
-Raspberry Pi 3 B
-Raspberry Pi Camera Module
-USB Microphone
+Hardware
+
+For the complete setup here you can find the links to the amazon stuff I use to develop the project:
+
+Monitor: https://www.amazon.com/gp/product/B00S8W8QMG
+
+Keyboard:
+https://www.amazon.com/gp/product/B005EOWBHC
+
+HDMI:
+https://www.amazon.com/gp/product/B014I8SSD0
+
+Mouse:
+https://www.amazon.com/gp/product/B005EJH6RW
+
+RPi Camera Module
+https://www.amazon.com/gp/product/B01ER2SKFS
+
+Raspberry Pi:
+https://www.amazon.com/gp/product/B01CD5VC92
+
+USB Microphone:
+https://www.amazon.com/gp/product/B00UZY2YQE
