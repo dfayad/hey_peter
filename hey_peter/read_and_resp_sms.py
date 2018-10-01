@@ -2,7 +2,7 @@ from googlevoice import Voice
 import sys
 from bs4 import BeautifulSoup
 import time
-import cv2
+#import cv2
 from six.moves import input
 
 def extractsms(htmlsms) :
