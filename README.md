@@ -44,11 +44,11 @@ What I plan to implement next:
 
 1) Implement some kind of alarm system so that in case the Pi detects movement in the house it will trigger a countdown and then emit a loud sound unless a keyword is said to the microphone.
 
-2) Integrate all functionalities into a single system. So far every funciton works on a different script and needs to be organized better.
+2) Display a funny picture of Peter once the program starts just for funzies hehe
 
-3) Display a funny picture of Peter once the program starts just for funzies hehe
+3) Add music playing functionality. Ex. "Hey Peter, play Despacito." I'm gonna try to use Spotify's API for this.
 
-4) Add music playing functionality. Ex. "Hey Peter, play Despacito." I'm gonna try to use Spotify's API for this.
+4) Keep track of a grocery list that I can access remotely (maybe using Google Voice or Dropbox?)
 
 Hardware
 
