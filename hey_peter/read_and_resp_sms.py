@@ -2,7 +2,7 @@ from googlevoice import Voice
 import sys
 from bs4 import BeautifulSoup
 import time
-import cv2
+#import cv2
 
 def extractsms(htmlsms) :
     #	Extract all conversations by searching for a DIV with an ID at top level.
@@ -41,9 +41,18 @@ def thimg():
         message.delete()
     print("deleted all messages too btw <3")
 
+start=time.time()
 while True:
-    thimg()
-    time.sleep(5)
+    
+    #time.sleep(5)
+
+    diff = time.time() - start
+    if diff > 5:
+        print('5 seconds have passed')
+        #define new start
+        start=time.time()
+        #run new 
+        thimg()
 
     key = cv2.waitKey(1) & 0xFF
     if key == ord("q"):
