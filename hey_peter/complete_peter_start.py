@@ -12,6 +12,7 @@ import os
 import subprocess
 
 import datetime
+import spotipy
 
 #for sms
 from six.moves import input
@@ -210,7 +211,6 @@ while True:
                 for word in grocery_item:
                     s=s+str(word)
                 add_grocery(s)
-
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
