@@ -8,6 +8,8 @@ def extractsms(htmlsms) :
     #	Extract all conversations by searching for a DIV with an ID at top level.
     tree = BeautifulSoup(htmlsms, 'lxml')			# parse HTML into tree    class="gc-message-sms-text"
     texts = tree.find_all("span",attrs={'class' : 'gc-message-sms-text'})
+    phoneNums = tree.find_all("span",attrs={'class' : 'gc-message-sms-from'})
+    
     #print(type(tree))
     #print(texts)
     msgs = []
@@ -15,7 +17,15 @@ def extractsms(htmlsms) :
         content = text.text.strip()
         msgs.append(content)
     #print(msgs)
-    return msgs
+
+    nums = []
+    for phoneNum in phoneNums:
+        content = phoneNum.text.strip()
+        nums.append(content)
+
+    print(nums)
+
+    return msgs, nums
 
 voice = Voice()
 email = 'hey.peter.rpi@gmail.com'
@@ -26,12 +36,20 @@ def thimg():
     voice.sms()
     print("sup")
 
-    messages = extractsms(voice.sms.html)
+    messages, phoneNums = extractsms(voice.sms.html)
+
+    if len(phoneNums) == 1:
+        phoneNumber = phoneNums[0][2:-1]
+        print('only one phone num sent messages')
+        print(phoneNumber)
+    else:
+        phoneNumber = 6073798229
+
     print("")
     print("")
     if 'groceries' in messages:
         print("extract groceries")
-        phoneNumber = 6073798229
+        
         text = 'heres a list of the groceries: [bread, milk]'
         voice.send_sms(phoneNumber, text)
     else:
@@ -54,8 +72,8 @@ while True:
         #run new 
         thimg()
 
-    key = cv2.waitKey(1) & 0xFF
-    if key == ord("q"):
-        break
+    #key = cv2.waitKey(1) & 0xFF
+    #if key == ord("q"):
+    #    break
 
 print("bye")
