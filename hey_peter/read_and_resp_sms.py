@@ -2,7 +2,8 @@ from googlevoice import Voice
 import sys
 from bs4 import BeautifulSoup
 import time
-#import cv2
+import cv2
+from six.moves import input
 
 def extractsms(htmlsms) :
     #	Extract all conversations by searching for a DIV with an ID at top level.

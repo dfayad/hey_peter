@@ -71,7 +71,7 @@ def send_text(voice):
 
     #phoneNumber = input('Number to send message to: ')
     #text = input('Message text: ')
-    phoneNumber = 7818358701 #write number you wanna get
+    phoneNumber = 6073798229 #write number you wanna get
     text = 'Hello from Hey Peter!'
 
     voice.send_sms(phoneNumber, text)
@@ -202,7 +202,7 @@ while True:
         #define new start
         start=time.time()
         #run new 
-        read_texts(voice)
+        #read_texts(voice)
     
     #loop over speech here
     print("okay im listening")
