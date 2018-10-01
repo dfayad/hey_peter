@@ -12,11 +12,15 @@ import os
 import subprocess
 
 import datetime
-import spotipy
+#import spotipy
 
-#for sms
+#---------for sms------------
 from six.moves import input
 from googlevoice import Voice
+voice = Voice()
+email = 'hey.peter.rpi@gmail.com' #write email here
+pw = input('hey peter pw: ') #write pw here
+voice.login(email, pw)
 
 #------------speech part------------------
 import speech_recognition as sr
@@ -27,11 +31,8 @@ print("A moment of silence please..")
 with m as source: r.adjust_for_ambient_noise(source)
 
 #send sms
-def send_text():
-    voice = Voice()
-    email = 'dfayadv@gmail.com' #write email here
-    pw = 'password' #write pw here
-    voice.login(email, pw)
+def send_text(voice):
+    
 
     #phoneNumber = input('Number to send message to: ')
     #text = input('Message text: ')
@@ -190,7 +191,7 @@ while True:
             elif "send text" in value:
                 print("sending text...")
                 os.system('aplay docs/Sure.wav')
-                send_text()
+                send_text(voice)
 
             elif "timer" in value:
             	print("starting timer...")

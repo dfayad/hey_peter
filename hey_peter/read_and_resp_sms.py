@@ -16,8 +16,8 @@ def extractsms(htmlsms) :
     return msgs
 
 voice = Voice()
-email = 'dfayadv@gmail.com'
-pw = 'kiwiabc123.'
+email = 'hey.peter.rpi@gmail.com'
+pw = input('hey peter password: ')
 voice.login(email,pw)
 
 voice.sms()
