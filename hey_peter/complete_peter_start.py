@@ -30,7 +30,7 @@ with m as source: r.adjust_for_ambient_noise(source)
 def send_text():
     voice = Voice()
     email = 'dfayadv@gmail.com' #write email here
-    pw = 'kiwiabc123.' #write pw here
+    pw = 'pw' #write pw here
     voice.login(email, pw)
 
     #phoneNumber = input('Number to send message to: ')
