@@ -12,10 +12,16 @@ import os
 import subprocess
 
 import datetime
+#import spotipy
 
-#for sms
+#---------for sms------------
 from six.moves import input
 from googlevoice import Voice
+from bs4 import BeautifulSoup #to parse sms
+voice = Voice()
+email = 'hey.peter.rpi@gmail.com' #write email here
+pw = input('hey peter pw: ') #write pw here
+voice.login(email, pw)
 
 #------------speech part------------------
 import speech_recognition as sr
@@ -25,16 +31,47 @@ m = sr.Microphone()
 print("A moment of silence please..")
 with m as source: r.adjust_for_ambient_noise(source)
 
+#read sms
+def extractsms(htmlsms) :
+    #	Extract all conversations by searching for a DIV with an ID at top level.
+    tree = BeautifulSoup(htmlsms, 'lxml')			# parse HTML into tree    class="gc-message-sms-text"
+    texts = tree.find_all("span",attrs={'class' : 'gc-message-sms-text'})
+    #print(type(tree))
+    #print(texts)
+    msgs = []
+    for text in texts:
+        content = text.text.strip()
+        msgs.append(content)
+    #print(msgs)
+    return msgs
+
+#check for incoming groceries text
+def read_texts(voice):
+    voice.sms()
+    print("sup")
+
+    messages = extractsms(voice.sms.html)
+    print("")
+    print("")
+    if 'groceries' in messages:
+        print("extract groceries")
+        phoneNumber = 6073798229
+        text = 'heres a list of the groceries: [bread, milk]'
+        voice.send_sms(phoneNumber, text)
+    else:
+        print("do nothing..")
+
+    for message in voice.sms().messages:
+        message.delete()
+    print("deleted all messages too btw <3")
+
 #send sms
-def send_text():
-    voice = Voice()
-    email = 'some_email' #write email here
-    pw = 'some_pw' #write pw here
-    voice.login(email, pw)
+def send_text(voice):
+    
 
     #phoneNumber = input('Number to send message to: ')
     #text = input('Message text: ')
-    phoneNumber = 1234567890 #write number you wanna get
+    phoneNumber = 6073798229 #write number you wanna get
     text = 'Hello from Hey Peter!'
 
     voice.send_sms(phoneNumber, text)
@@ -145,7 +182,28 @@ def motion_detection():
     camera.close()
     cv2.destroyAllWindows()
 
+def timer(length):
+	for i in range(length):
+		print(i)
+		time.sleep(1)
+
+items = []
+def add_grocery(item):
+    if item != '':
+        items.append(item)
+    print(items)
+
+start= time.time()
 while True:
+    #polling loop every 5 seconds
+    diff = time.time() - start
+    if diff > 5:
+        print('5 seconds have passed')
+        #define new start
+        start=time.time()
+        #run new 
+        #read_texts(voice)
+    
     #loop over speech here
     print("okay im listening")
     with m as source:audio = r.listen(source)
@@ -165,6 +223,10 @@ while True:
                 print("weather? sure!")
                 os.system('aplay docs/Sure.wav')
                 print(get_weather())
+                        
+            elif "thank" in value:
+                print("no problem buddy")
+                os.system('aplay docs/Sure.wav')
 
             elif "start motion detection" in value:
                 print("weather? sure!")
@@ -174,7 +236,27 @@ while True:
             elif "send text" in value:
                 print("sending text...")
                 os.system('aplay docs/Sure.wav')
-                send_text()
+                send_text(voice)
+
+            elif "timer" in value:
+            	print("starting timer...")
+            	os.system('aplay docs/Sure.wav')
+            	string_value = str(value)
+            	l = string_value.split(" ")
+            	secs = int(l[1])
+            	timer(secs)
+
+            elif "grocer" in value:
+                #so it catches grocery or groceries
+                print("adding to grocery list...")
+                os.system('aplay docs/Sure.wav')
+                string_value = str(value)
+                arr = string_value.split(" ")
+                grocery_item = arr[1:]
+                s=""
+                for word in grocery_item:
+                    s=s+str(word)
+                add_grocery(s)
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
