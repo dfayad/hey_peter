@@ -1,17 +1,7 @@
 #coding: utf-8
-import pyowm
-from collections import deque
-import numpy as np
-import argparse
-import imutils
-import cv2
-from picamera.array import PiRGBArray
-from picamera import PiCamera
 import time
 import os
-import subprocess
 
-import datetime
 #import spotipy
 
 #for weather
@@ -27,11 +17,9 @@ from timer import timer
 from gvoice_sms import send_text
 from gvoice_sms import read_texts
 
-
 #---------for sms------------
 from six.moves import input
 from googlevoice import Voice
-from bs4 import BeautifulSoup #to parse sms
 voice = Voice()
 email = 'hey.peter.rpi@gmail.com' #write email here
 pw = input('hey peter pw: ') #write pw here
@@ -48,18 +36,7 @@ with m as source: r.adjust_for_ambient_noise(source)
 #motion detection function
 from motion_detection import motion_detection
 
-
-
-start= time.time()
 while True:
-    #polling loop every 5 seconds
-    diff = time.time() - start
-    if diff > 5:
-        print('5 seconds have passed')
-        #define new start
-        start=time.time()
-        #run new 
-        #read_texts(voice)
     
     #loop over speech here
     print("okay im listening")

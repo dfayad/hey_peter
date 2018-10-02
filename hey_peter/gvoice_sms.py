@@ -1,3 +1,6 @@
+from bs4 import BeautifulSoup
+from six.moves import input
+
 #send sms
 def send_text(voice):
     
