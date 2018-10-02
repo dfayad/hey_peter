@@ -11,6 +11,9 @@ import time
 import os
 import subprocess
 
+#update list
+from update_json import add_item
+
 import datetime
 #import spotipy
 
@@ -190,8 +193,10 @@ def timer(length):
 items = []
 def add_grocery(item):
     if item != '':
-        items.append(item)
-    print(items)
+        #items.append(item)
+        add_item('data.json', item)
+
+    #print(items)
 
 start= time.time()
 while True:
