@@ -18,7 +18,7 @@ import datetime
 from weather import get_weather
 
 #for groceries
-from groceries import add_item
+from groceries import add_grocery
 
 #for timer
 from timer import timer
