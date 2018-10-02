@@ -11,11 +11,20 @@ import time
 import os
 import subprocess
 
-#update list
-from update_json import add_item
-
 import datetime
 #import spotipy
+
+#for weather
+from weather import get_weather
+
+#for groceries
+from groceries import add_item
+
+#for timer
+from timer import timer
+
+#for texts
+from gvoice_sms import send_text
 
 #---------for sms------------
 from six.moves import input
@@ -67,39 +76,6 @@ def read_texts(voice):
     for message in voice.sms().messages:
         message.delete()
     print("deleted all messages too btw <3")
-
-#send sms
-def send_text(voice):
-    
-
-    #phoneNumber = input('Number to send message to: ')
-    #text = input('Message text: ')
-    phoneNumber = 6073798229 #write number you wanna get
-    text = 'Hello from Hey Peter!'
-
-    voice.send_sms(phoneNumber, text)
-
-#weather function
-def get_weather():
-    owm = pyowm.OWM('95a141370f399bb06abaa704d3c26a29')  # You MUST provide a valid API key
-
-    # Have a pro subscription? Then use:
-    # owm = pyowm.OWM(API_key='your-API-key', subscription_type='pro')
-
-    # Search for current weather in London (Great Britain)
-    location = 'Poughkeepsie,US'
-    observation = owm.weather_at_place(location)
-    w = observation.get_weather()
-    status = w.get_status()
-    currTemp = int(w.get_temperature('celsius')['temp'])
-    print('Heres the weather:')
-    #print("The current temperature in " + str(location) + " is " + str(currTemp) + "ºC and the status is " + str(status))
-    observation_list = owm.weather_around_coords(-22.57, -43.12)
-    #print(observation_list)
-
-    output = "The current temperature in " + str(location) + " is " + str(currTemp) + "ºC and the status is " + str(status)
-
-    return output
 
 #motion detection function
 def motion_detection():
@@ -185,18 +161,7 @@ def motion_detection():
     camera.close()
     cv2.destroyAllWindows()
 
-def timer(length):
-	for i in range(length):
-		print(i)
-		time.sleep(1)
 
-items = []
-def add_grocery(item):
-    if item != '':
-        #items.append(item)
-        add_item('data.json', item)
-
-    #print(items)
 
 start= time.time()
 while True:
