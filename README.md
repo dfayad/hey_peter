@@ -31,6 +31,13 @@ To send texts
 (Python Wrapper for Google Voice API)
 https://github.com/pettazz/pygooglevoice
 
+To receive texts:
+Install Beautiful Soup
+and depending if you are using python2 (i am), you might need to install the xml parser
+ony my raspberry pi i used these commands:
+"pip install beautifulsoup4"
+"sudo apt-get install python-lxml"
+
 So far here is what it can do:
 1) Respond to you when you say "Hey Peter"
 
@@ -39,7 +46,11 @@ So far here is what it can do:
 3) If you say the command "weather" it returns the current temperature (in celsius) and the weather general status (sunny, rainy, cloudy) in the location specified in the weather.py file.
 
 4) The command "send text" sends "Hello! from Hey Peter!" to any phone number that you want (i think it has to be a US number), you just gotta get a Google Voice account first, and then write your credentials (email, password and target phone number) in the send_text() function of the complete_peter_start.py file. 
- 
+
+5) You can also start a timer by saying "timer 10" where the second parameter is the number of seconds you want the timet to go for.
+
+6) Groceries: So I always forget to bring a list of groceries whenever i go to the supermarket, so I decided communicating with peter would be the best way to fix that. If you run read_and_resp_sms.py it will act as a server and if you send an sms "groceries" to hey_peter's google phone number, it will respond with a default list of groceries. You can also add groceries to hey peter by saying "groceries [item]" in the main program. So far these two lists are not related, I will try to make it into a separate json file or something that I can maninpulate from hey peter and from the sms server-like program.
+
 What I plan to implement next:
 
 1) Implement some kind of alarm system so that in case the Pi detects movement in the house it will trigger a countdown and then emit a loud sound unless a keyword is said to the microphone.
