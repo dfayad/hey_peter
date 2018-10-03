@@ -15,7 +15,7 @@ from timer import timer
 
 #for texts
 from gvoice_sms import send_text
-from gvoice_sms import read_texts
+from gvoice_sms import read_and_resp
 
 #---------for sms------------
 from six.moves import input
