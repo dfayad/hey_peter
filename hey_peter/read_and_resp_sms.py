@@ -17,8 +17,8 @@ while True:
     #time.sleep(5)
 
     diff = time.time() - start
-    if diff > 5:
-        print('5 seconds have passed')
+    if diff > 3:
+        print('3 seconds have passed')
         #define new start
         start=time.time()
         #run new 
