@@ -12,16 +12,10 @@ import os
 import subprocess
 
 import datetime
-#import spotipy
 
-#---------for sms------------
+#for sms
 from six.moves import input
 from googlevoice import Voice
-from bs4 import BeautifulSoup #to parse sms
-voice = Voice()
-email = 'hey.peter.rpi@gmail.com' #write email here
-pw = input('hey peter pw: ') #write pw here
-voice.login(email, pw)
 
 #------------speech part------------------
 import speech_recognition as sr
@@ -31,43 +25,12 @@ m = sr.Microphone()
 print("A moment of silence please..")
 with m as source: r.adjust_for_ambient_noise(source)
 
-#read sms
-def extractsms(htmlsms) :
-    #	Extract all conversations by searching for a DIV with an ID at top level.
-    tree = BeautifulSoup(htmlsms, 'lxml')			# parse HTML into tree    class="gc-message-sms-text"
-    texts = tree.find_all("span",attrs={'class' : 'gc-message-sms-text'})
-    #print(type(tree))
-    #print(texts)
-    msgs = []
-    for text in texts:
-        content = text.text.strip()
-        msgs.append(content)
-    #print(msgs)
-    return msgs
-
-#check for incoming groceries text
-def read_texts(voice):
-    voice.sms()
-    print("sup")
-
-    messages = extractsms(voice.sms.html)
-    print("")
-    print("")
-    if 'groceries' in messages:
-        print("extract groceries")
-        phoneNumber = 6073798229
-        text = 'heres a list of the groceries: [bread, milk]'
-        voice.send_sms(phoneNumber, text)
-    else:
-        print("do nothing..")
-
-    for message in voice.sms().messages:
-        message.delete()
-    print("deleted all messages too btw <3")
-
 #send sms
-def send_text(voice):
-    
+def send_text():
+    voice = Voice()
+    email = 'dfayadv@gmail.com' #write email here
+    pw = 'some_password' #write pw here
+    voice.login(email, pw)
 
     #phoneNumber = input('Number to send message to: ')
     #text = input('Message text: ')
@@ -193,17 +156,7 @@ def add_grocery(item):
         items.append(item)
     print(items)
 
-start= time.time()
 while True:
-    #polling loop every 5 seconds
-    diff = time.time() - start
-    if diff > 5:
-        print('5 seconds have passed')
-        #define new start
-        start=time.time()
-        #run new 
-        #read_texts(voice)
-    
     #loop over speech here
     print("okay im listening")
     with m as source:audio = r.listen(source)
@@ -236,7 +189,7 @@ while True:
             elif "send text" in value:
                 print("sending text...")
                 os.system('aplay docs/Sure.wav')
-                send_text(voice)
+                send_text()
 
             elif "timer" in value:
             	print("starting timer...")
@@ -257,6 +210,7 @@ while True:
                 for word in grocery_item:
                     s=s+str(word)
                 add_grocery(s)
+
 
             elif ("exit" in value) or ("bye" in value):
                 print("oh ok gbye i'll miss you")
