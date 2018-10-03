@@ -30,6 +30,13 @@ def delete_items(filename):
     with open(filename, 'w') as outfile:
             json.dump(data, outfile)
 
+def get_list(filename):
+    with open(filename) as json_file:
+        data = json.load(json_file)
+        value = data['list']
+        return value
+
 #create_json()
 #update_json('data.json', 123)
-delete_items('data.json')
+#delete_items('data.json')
+#print(get_list('data.json'))

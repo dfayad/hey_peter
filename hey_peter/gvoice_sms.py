@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from six.moves import input
+from update_json import get_list
 
 #send sms
 def send_text(voice):
@@ -28,7 +29,7 @@ def extractsms(htmlsms) :
     return msgs
 
 #check for incoming groceries text
-def read_texts(voice):
+def read_and_resp(voice):
     voice.sms()
     print("sup")
 
@@ -38,7 +39,8 @@ def read_texts(voice):
     if 'groceries' in messages:
         print("extract groceries")
         phoneNumber = 6073798229
-        text = 'heres a list of the groceries: [bread, milk]'
+        text = str(get_list('data.json'))
+        #text = 'heres a list of the groceries: [bread, milk]'
         voice.send_sms(phoneNumber, text)
     else:
         print("do nothing..")
