@@ -1,6 +1,8 @@
 import spotipy
 import spotipy.util as util
 
+#debugging in branch casey
+
 def spotify():
 	client_id = "4c47d5777ede4a168dd986dd3027e9d8"
 	secret = "d2dd908118c049b99d989a1c3c380b65"
